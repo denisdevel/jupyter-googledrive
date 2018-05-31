@@ -18,7 +18,7 @@ RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificate
     rm tini.deb && \
     cd && git clone https://github.com/jupyterlab/jupyterlab && cd jupyterlab && conda install -c conda-forge jupyterlab && \
     conda install -c conda-forge nodejs && jupyter labextension install @jupyterlab/google-drive && mkdir /etc/openssl && \
-    cd /etc/openssl && mkdir ca ca/certs ca/crl ca/newcerts ca/private && chmod 700 ca/private && touch ca/index.txt && echo 1001 > ca/serial && \
+    cd /etc/openssl && mkdir ca ca/certs ca/crl ca/newcerts ca/private && chmod 700 ca/private && touch ca/index.txt && echo 1005 > ca/serial && \
     openssl genrsa -out ca/private/ca.key.pem 4096 && chmod 400 ca/private/ca.key.pem && \
     openssl req -key ca/private/ca.key.pem  -new -x509 -days 7300 -extensions v3_ca -out ca/certs/ca.cert.pem  \
     -subj "/C=DE/ST=NRW/L=Berlin/O=My Inc/OU=DevOps/CN=www.example.com/emailAddress=dev@www.example.com" && \
