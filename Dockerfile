@@ -14,8 +14,7 @@ RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificate
     apt-get install -y curl grep sed dpkg && \
     TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \
     curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \
-    dpkg -i tini.deb && \
-    rm tini.deb && \
+    dpkg -i tini.deb && rm tini.deb && \
     cd && git clone https://github.com/jupyterlab/jupyterlab && cd jupyterlab && conda install -c conda-forge jupyterlab && \
     conda install -c conda-forge nodejs && jupyter labextension install @jupyterlab/google-drive && mkdir /etc/openssl && \
     cd /etc/openssl && mkdir ca ca/certs ca/crl ca/newcerts ca/private && chmod 700 ca/private && touch ca/index.txt && echo 1005 > ca/serial && \
